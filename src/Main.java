@@ -15,18 +15,18 @@ public class Main {
         Node p, q;
         Person x;
         int k;
-        String[] a = {"A", "C", "B", "E", "D"};
-        int[] b = {9, 5, 17, 5, 8};
+        String[] a = { "A", "C", "B", "E", "D" };
+        int[] b = { 9, 5, 17, 5, 8 };
 
         System.out.println("\n1. Test addLast");
         t.clear();
         t.addMany(a, b);
-        t.traverse(); //  (A,9) (C,5) (B,17) (E,5) (D,8)
+        t.traverse(); // (A,9) (C,5) (B,17) (E,5) (D,8)
 
         System.out.println("\n2. Test searchByName");
         t.clear();
         t.addMany(a, b);
-        t.traverse(); //  (A,9) (C,5) (B,17) (E,5) (D,8)
+        t.traverse(); // (A,9) (C,5) (B,17) (E,5) (D,8)
         p = t.searchByName("B");
         if (p == null) {
             System.out.println("Not found");
@@ -39,7 +39,7 @@ public class Main {
         System.out.println("\n3. Test addFirst");
         t.clear();
         t.addMany(a, b);
-        t.traverse(); //  (A,9) (C,5) (B,17) (E,5) (D,8)
+        t.traverse(); // (A,9) (C,5) (B,17) (E,5) (D,8)
         x = new Person("X", 30);
         t.addFirst(x);
         t.traverse(); // (X,30) (A,9) (C,5) (B,17) (E,5) (D,8)
@@ -97,7 +97,7 @@ public class Main {
         t.traverse(); // (A,9) (C,5) (B,17) (E,5) (D,8)
         p = t.pos(2);
         System.out.println("The person at position 2 is ");
-        t.visit(p); // The person at position 2 is  (B,17)
+        t.visit(p); // The person at position 2 is (B,17)
         System.out.println();
 
         System.out.println("\n11. Test removePos(int k)");
@@ -174,22 +174,22 @@ public class Main {
         t.setData(p, x);
         t.traverse(); // (D,8) (E,5) (XX,99) (C,5) (A,9)
 
-        String[] c = {"A", "B", "C", "D", "E", "F", "G", "H", "I"};
-        int[] d = {9, 8, 7, 6, 15, 4, 3, 2, 1};
+        String[] c = { "A", "B", "C", "D", "E", "F", "G", "H", "I" };
+        int[] d = { 9, 8, 7, 6, 15, 4, 3, 2, 1 };
         System.out.println("\n20. Test sortByAge(3, 6)");
         t.clear();
         t.addMany(c, d);
         t.traverse(); // (A,9) (B,8) (C,7) (D,6) (E,15) (F,4) (G,3) (H,2) (I,1)
         t.sortByAge(3, 6);
-//        t.traverse(); // (A,9) (B,8) (C,7) (G,3) (F,4) (D,6) (E,15) (H,2) (I,1)  
+        t.traverse(); // (A,9) (B,8) (C,7) (G,3) (F,4) (D,6) (E,15) (H,2) (I,1)
 
-//        System.out.println("\n21. Test reverse(3, 6)");
-//        t.clear();
-//        t.addMany(c, d);
-//        t.traverse(); // (A,9) (B,8) (C,7) (D,6) (E,15) (F,4) (G,3) (H,2) (I,1)
-//        t.reverse(3, 6);
-//        t.traverse(); // (A,9) (B,8) (C,7) (G,3) (F,4) (E,15) (D,6) (H,2) (I,1) 
-//
-////        System.out.println();
+        // System.out.println("\n21. Test reverse(3, 6)");
+        // t.clear();
+        // t.addMany(c, d);
+        // t.traverse(); // (A,9) (B,8) (C,7) (D,6) (E,15) (F,4) (G,3) (H,2) (I,1)
+        // t.reverse(3, 6);
+        // t.traverse(); // (A,9) (B,8) (C,7) (G,3) (F,4) (E,15) (D,6) (H,2) (I,1)
+        //
+        //// System.out.println();
     }
 }

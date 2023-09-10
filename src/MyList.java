@@ -184,7 +184,7 @@ public class MyList {
         }
     }
 
-// (8)
+    // (8)
     public void remove(int xAge) {
         Node p = head;
         Node prev = null;
@@ -375,7 +375,7 @@ public class MyList {
         head = prev;
     }
 
-    // (17) 
+    // (17)
     public Node findMaxAge() {
         if (isEmpty()) {
             return null;
@@ -394,7 +394,7 @@ public class MyList {
         return maxNode;
     }
 
-    // (18) 
+    // (18)
     public Node findMinAge() {
         if (isEmpty()) {
             return null;
@@ -413,69 +413,103 @@ public class MyList {
         return minNode;
     }
 
-    // (19) 
+    // (19)
     public void setData(Node p, Person x) {
         if (p != null) {
             p.infor = x;
         }
     }
 
-    // (20) 
+    // (20)
     public void sortByAge(int start, int end) {
-        
+
         if (head == null || start >= end || end >= size()) {
             return; // Không cần sắp xếp nếu danh sách rỗng hoặc vị trí không hợp lệ.
         }
-//        
-        Node headClone = head;
-        Node current = headClone;
+        //
+        Node startNode = head;
+        Node endNode = tail;
+        Node current = head;
         Node prev = null;
         Node prevEnd = null; // Node trước nút cuối của phạm vi sắp xếp
 
         // Đưa con trỏ current đến vị trí start
-        for (int i = 0; i < start; i++) {
+        for (int i = 0; i < end; i++) {
+            if (i == start) {
+                startNode = current;
+            }
             prev = current;
             current = current.next;
         }
+        endNode = current;
+        current = startNode;
+        // for (int i = 0; i < start; i++) {
+        // prev = current;
+        // current = current.next;
+        // }
 
-        for (int i = start; i < end; i++) {
-            Node innerCurrent = current;
+        // sort
+        while (current != endNode) {
+            Node innerCurrent = startNode;
             Node innerPrev = prev;
-
-            for (int j = i + 1; j <= end; j++) {
+            while (innerCurrent != endNode) {
                 if (innerCurrent.infor.age > innerCurrent.next.infor.age) {
-                    // Swap data of innerCurrent and innerCurrent.next
                     Person temp = innerCurrent.infor;
                     innerCurrent.infor = innerCurrent.next.infor;
                     innerCurrent.next.infor = temp;
-                    
-                    if (innerPrev != null) {
-                        innerPrev.next = innerCurrent.next;
-                    } else {
-                        headClone = innerCurrent.next;
-                    }
-
-                    innerCurrent.next = innerCurrent.next.next;
-                    if (innerCurrent.next == null) {
-                        tail = innerCurrent;
-                    } else if (prevEnd != null) {
-                        prevEnd.next = innerCurrent;
-                    } else {
-                        headClone = innerCurrent;
-                    }
-
-                    innerPrev = innerCurrent;
-                } else {
-                    innerPrev = innerCurrent;
-                    innerCurrent = innerCurrent.next;
                 }
+                innerPrev = innerCurrent;
+                innerCurrent = innerCurrent.next;
             }
-            end--;
-            prevEnd = innerPrev;
             prev = current;
             current = current.next;
         }
-        this.traverse();
+        
+        // for (int i = start; i <= end; i++) {
+        // System.out.println(i);
+        // Node innerCurrent = current;
+        // Node innerPrev = prev;
+
+        // for (int j = 0; j < end - i - 1; j++) {
+        // if (innerCurrent.infor.age > innerCurrent.next.infor.age) {
+        // // Swap data of innerCurrent and innerCurrent.next
+        // this.visit(innerCurrent);
+        // this.visit(innerCurrent.next);
+        // System.out.println("");
+        // Person temp = innerCurrent.infor;
+        // innerCurrent.infor = innerCurrent.next.infor;
+        // innerCurrent.next.infor = temp;
+        // this.visit(innerCurrent);
+        // this.visit(innerCurrent.next);
+        // System.out.println("");
+        // if (innerPrev != null) {
+        // innerPrev.next = innerCurrent.next;
+        // } else {
+        // head = innerCurrent.next;
+        // }
+
+        // innerCurrent.next = innerCurrent.next.next;
+        // if (innerCurrent.next == null) {
+        // tail = innerCurrent;
+        // } else if (prevEnd != null) {
+        // prevEnd.next = innerCurrent;
+        // } else {
+        // head = innerCurrent;
+        // }
+
+        // innerPrev = innerCurrent;
+        // } else {
+        // innerPrev = innerCurrent;
+        // innerCurrent = innerCurrent.next;
+        // }
+        // }
+        // this.visit(head);
+        // prevEnd = innerPrev;
+        // prev = current;
+        // current = current.next;
+        // this.traverse();
+        // }
+        // this.traverse();
     }
 
 }
